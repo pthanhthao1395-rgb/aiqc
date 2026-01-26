@@ -10,6 +10,7 @@ import {
   Cpu
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 
 interface SidebarProps {
   activeTab: string;
@@ -84,6 +85,11 @@ export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
           <ChevronLeft className="w-4 h-4" />
         )}
       </button>
+
+      {/* Theme Toggle */}
+      <div className="px-3 py-2 border-t border-sidebar-border">
+        <ThemeToggle collapsed={collapsed} />
+      </div>
 
       {/* Footer */}
       <div className="px-4 py-4 border-t border-sidebar-border">
