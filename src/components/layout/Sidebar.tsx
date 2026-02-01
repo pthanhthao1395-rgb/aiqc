@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
+import Logo from "@/assets/logo.jpg";
 
 interface SidebarProps {
   activeTab: string;
@@ -37,12 +38,16 @@ export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
     >
       {/* Logo */}
       <div className="flex items-center gap-3 px-6 py-6 border-b border-sidebar-border">
-        <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary glow-primary">
-          <Cpu className="w-5 h-5 text-primary-foreground" />
+        <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10">
+          <img
+            src={Logo}
+            alt="QC AI Logo"
+            className="w-6 h-6 object-contain"
+          />
         </div>
         {!collapsed && (
           <div className="animate-fade-in">
-            <h1 className="text-lg font-bold text-foreground">QC AI</h1>
+            <h1 className="text-lg font-bold text-foreground">AI QC Platform</h1>
             <p className="text-xs text-muted-foreground">Defect Detection</p>
           </div>
         )}

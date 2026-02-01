@@ -1,6 +1,12 @@
 import { Check, X, Clock, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+// ✅ Local inspection thumbnails
+import demo0 from "@/assets/inspection/demo.jpeg";
+import demo1 from "@/assets/inspection/demo1.jpeg";
+import demo2 from "@/assets/inspection/demo2.jpeg";
+import demo3 from "@/assets/inspection/demo3.jpeg";
+
 interface Inspection {
   id: string;
   imageUrl: string;
@@ -14,34 +20,34 @@ interface Inspection {
 const recentInspections: Inspection[] = [
   {
     id: "INS-001",
-    imageUrl: "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=100&h=100&fit=crop",
+    imageUrl: demo0,
     defectType: "Stain",
-    confidence: 94,
+    confidence: 92,
     status: "confirmed",
     timestamp: "2 min ago",
     productCode: "SKU-A1234",
   },
   {
     id: "INS-002",
-    imageUrl: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=100&h=100&fit=crop",
+    imageUrl: demo1,
     defectType: "Broken Stitch",
-    confidence: 87,
+    confidence: 86,
     status: "pending",
     timestamp: "5 min ago",
     productCode: "SKU-B5678",
   },
   {
     id: "INS-003",
-    imageUrl: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=100&h=100&fit=crop",
+    imageUrl: demo2,
     defectType: "Hole",
-    confidence: 72,
+    confidence: 74,
     status: "rejected",
     timestamp: "8 min ago",
     productCode: "SKU-C9012",
   },
   {
     id: "INS-004",
-    imageUrl: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=100&h=100&fit=crop",
+    imageUrl: demo3,
     defectType: "Fabric Scratch",
     confidence: 91,
     status: "confirmed",
@@ -86,11 +92,11 @@ export function RecentInspections() {
           View All
         </button>
       </div>
-      
+
       <div className="divide-y divide-border">
         {recentInspections.map((inspection, index) => {
           const StatusIcon = statusConfig[inspection.status].icon;
-          
+
           return (
             <div
               key={inspection.id}
@@ -108,7 +114,7 @@ export function RecentInspections() {
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-warning rounded-full animate-pulse" />
                 )}
               </div>
-              
+
               {/* Details */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
@@ -121,7 +127,7 @@ export function RecentInspections() {
                   <span>{inspection.timestamp}</span>
                 </div>
               </div>
-              
+
               {/* Confidence */}
               <div className="text-right">
                 <span className={cn("text-lg font-bold font-mono", getConfidenceColor(inspection.confidence))}>
@@ -129,12 +135,14 @@ export function RecentInspections() {
                 </span>
                 <p className="text-xs text-muted-foreground">Confidence</p>
               </div>
-              
+
               {/* Status Badge */}
-              <div className={cn(
-                "flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium",
-                statusConfig[inspection.status].className
-              )}>
+              <div
+                className={cn(
+                  "flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium",
+                  statusConfig[inspection.status].className
+                )}
+              >
                 <StatusIcon className="w-3.5 h-3.5" />
                 {statusConfig[inspection.status].label}
               </div>
